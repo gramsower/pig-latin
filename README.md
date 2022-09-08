@@ -77,10 +77,67 @@ const text = "red RED Red!";
 numberOfOccurrencesInText(word, text);
 Expected Output: 0
 
-Describe omitOffensiveWords()
+Describe: omitOffensiveWords()
+
 Test: "It should find all instances of 'zoinks'."
 Code:
 const text = "zoinks";
 const word= "zoinks";
 omitOffensiveWords(word, text);
 Expected Output: 1
+
+Describe: boldPassage()
+
+Test: "It should return null if no word or text is entered."
+Code:
+const text = "";
+const word = "";
+boldPassage(word, text);
+Expected Output: null
+
+Test: "It should return a non-matching word in a p tag."
+Code:
+const word = "hello";
+const text = "yo";
+boldPassage(word, text);
+Expected Output: <p>yo</p>
+
+Test: "It should return a matching word in a strong tag."
+Code:
+const word = "hello";
+const text = "hello";
+boldPassage(word, text);
+Expected Output: <p><strong>hello</strong></p>
+
+Test: "It should wrap words that match in strong tags but not words that don't."
+Code:
+const word = "hello";
+const text = "hello there";
+boldPassage(word, text);
+Expected Output: <p><strong>hello</strong>there</p>
+
+Describe: pigLatin
+
+Test: "It will add 'way' to the end of words that begin with a vowel."
+Code: pigLatin("a");
+Expected Output: "away"
+
+Test: "For a word beginning with 'qu', it will move 'qu' to the end of the word and append 'ay'."
+Code: pigLatin("queen");
+Expected Output: "eenquay"
+
+Test: "For a word beginning with 'squ', it will move 'squ' to the end of the word and append 'ay'."
+Code: pigLatin("squish");
+Expected Output: "ishsquay"
+
+Test: For a word beginning with one consonant, it will move the consonant to the end of the word and append 'ay'."
+Code: pigLatin("Janeway");
+Expected Output: "anewayJay"
+
+Test: For a word beginning with two consonants, it will move the consonants to the end of the word and append 'ay'."
+Code: pigLatin("chase");
+Expected Output: "asechay"
+
+Test: For a word beginning with three consonants, it will move the consonants to the end of the word and append 'ay'."
+Code: pigLatin("stretch");
+Expected Output: "etchstray"
